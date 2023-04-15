@@ -1,3 +1,4 @@
+//skopiowane cos z poprzednich wersji
 const secondColumn = document.querySelector('.secondColumn');
 const templateItem = document.querySelector('.template');
 const priceSite = document.querySelector('.priceTitle');
@@ -58,9 +59,7 @@ const addNewPrintView = () => {
 const writeTextUptoDate = (mes, e) => {
 	mes.textContent = e.target.value;
 };
-inputMessage.addEventListener('keyup', (e) =>
-	writeTextUptoDate(messageP, e)
-);
+inputMessage.addEventListener('keyup', (e) => writeTextUptoDate(messageP, e));
 inputTitle.addEventListener('keyup', (e) =>
 	writeTextUptoDateMessage(titleP, e)
 );
