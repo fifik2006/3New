@@ -1,0 +1,353 @@
+@import 'colors';
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: var(--secondColor);
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}
+
+.layout {
+	position: relative;
+	background-color: var(--mainColor);
+	min-width: 100vw;
+	min-height: 100vh;
+	display: flex;
+}
+
+.firstColumn {
+	position: relative;
+	display: flex;
+	width: 15%;
+	background-color: var(--second-color);
+	flex-direction: column;
+	min-width: 220px;
+	margin-right: 5px;
+	height: 100%;
+}
+.applicationInfo {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	//background-color: $thirdColor;
+	height: 200px;
+}
+
+.menu {
+	justify-content: center;
+	display: flex;
+	width: 100%;
+	overflow: auto;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	.btnMenu {
+		position: relative;
+		height: 50px;
+		width: 150px;
+		margin-top: 10px;
+		border-radius: 5px;
+		cursor: pointer;
+		background-color: var(--btnColor);
+		border: none;
+		color: var(--fontColor);
+	}
+	.btnMenu:hover {
+		font-size: 20px;
+		scale: 1.1;
+		color: var(--fontColor);
+	}
+
+	.btnMenu:active {
+		background-color: #d3f4d4;
+		box-shadow: 0 3px #666;
+		transform: translateY(2px);
+	}
+}
+
+.secondColumnStyle {
+	position: relative;
+	background-color: var(--thirdColor);
+	display: flex;
+	flex-direction: column;
+	width: 30%;
+	min-width: 250px;
+	min-height: 100vh;
+	padding: 8px;
+
+	//padding: 10px;
+	//margin-left: 5px;
+	.templateStyle {
+		margin-top: 60px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		width: 100%;
+		//background-color: red;
+		//height: 200px;
+		border-radius: 5px;
+	}
+	.underline {
+		margin-top: 10px;
+		position: relative;
+		width: 100%;
+		background-color: var(--unerlineColor);
+		height: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+	.priceSite {
+		margin-top: 60px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		width: 100%;
+		background-color: var(--unerlineColor);
+		height: 200px;
+		border-radius: 5px;
+		color: var(--fontColor);
+	}
+	.savedTemplates {
+		position: relative;
+		width: 100%;
+		height: 30px;
+		background-color: var(--secondColor);
+		border-radius: 5px;
+		border: none;
+		color: var(--fontColor);
+		margin-top: 10px;
+	}
+}
+.arrow {
+	align-self: flex-end;
+	cursor: pointer;
+	i {
+		padding: 10px;
+		color: black;
+		font-size: 30px;
+
+		color: var(--mainColor);
+	}
+}
+
+.firstSection {
+	margin-top: 60px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	background-color: var(--secondColor);
+	height: 200px;
+	border-radius: 5px;
+}
+
+.btnsTemp {
+	margin: 2px;
+	margin-top: 10px;
+}
+.btnTemplate {
+	position: relative;
+	width: 100px;
+	height: 30px;
+	background-color: var(--unerlineColor);
+	border: none;
+	margin: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: var(--fontColor);
+}
+input {
+	text-align: center;
+}
+
+.date {
+	position: relative;
+	width: 200px;
+	height: 40px;
+	background-color: var(--secondColor);
+	color: var(--fontColor);
+	border: none;
+	border-radius: 5px;
+	text-transform: uppercase;
+}
+.inputTitle {
+	position: relative;
+	height: 50px;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: var(--unerlineColor);
+	color: var(--fontColor);
+}
+.inputMessage {
+	position: relative;
+	min-height: 200px;
+	width: 100%;
+	border-radius: 5px;
+	border: none;
+	word-wrap: break-word;
+	background-color: var(--unerlineColor);
+	color: var(--fontColor);
+	text-align: center;
+}
+.btnPrint {
+	position: relative;
+	height: 50px;
+	width: 200px;
+	font-size: 15px;
+	border-radius: 5px;
+	background-color: var(--unerlineColor);
+	border: none;
+	align-items: center;
+	color: var(--fontColor);
+}
+.btnsView {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	margin: 10px;
+}
+
+.thirdColumn {
+	position: relative;
+	width: 100vw;
+	min-height: 100vh;
+	background-color: var(--secondColor);
+	padding: 5px;
+	.thirdLayout {
+		position: relative;
+		//width: 100%;
+		//height: 100%;
+	}
+
+	.thirdLayoutStyle {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		//width: 100%;
+		min-height: 100vh;
+		background-color: var(--mainColor);
+		padding: 5px;
+		padding: 30px;
+	}
+	.printViewStyle {
+		position: relative;
+		//width: 100%;
+		min-height: 300px;
+		background-color: var(--secondColor);
+		border-radius: 5px;
+		margin: 10px;
+		padding: 10px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+
+		p {
+			text-align: center;
+		}
+
+		.titleView {
+			margin: 5px;
+			text-transform: uppercase;
+			text-justify: inter-word;
+			font-size: 22px;
+			color: var(--fontColor);
+		}
+		.messageView {
+			position: relative;
+			margin-top: 10px;
+			padding: 10px;
+			font-size: 18px;
+			//width: 100vw;
+			word-wrap: break-word;
+			color: var(--fontColor);
+		}
+	}
+	.view {
+		display: flex;
+	}
+}
+textarea {
+	position: relative;
+	width: 100px;
+	height: 30px;
+	background-color: var(--secondColor);
+}
+.btnPrint2 {
+	position: relative;
+	height: 50px;
+	width: 150px;
+
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: var(--btnColor);
+	border: none;
+	color: var(--fontColor);
+}
+p.date {
+	display: flex;
+	width: 150px;
+	height: 50px;
+	margin-top: 10px;
+	justify-content: center;
+	align-items: center;
+	color: var(--fontColor);
+}
+.mainStyle {
+	position: relative;
+	width: auto;
+	height: auto;
+	min-height: 300px;
+	background-color: var(--secondColor);
+	border-radius: 5px;
+	margin: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	text-align: center;
+}
+.heroBG {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-image: url(../img/main.jpg);
+	border-radius: 10px;
+	z-index: 0;
+}
+.shadow-bg {
+	background-color: rgba(230, 243, 239, 0.7);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+
+	//z-index: 0;
+}
+h2 {
+	z-index: 5;
+	font-size: 50px;
+	color: var(--second-color);
+}

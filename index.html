@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/b06d117218.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css" </head>
+    <title>3New</title>
+</head>
+
+<body data-mode="light">
+    <div class="layout">
+        <div class="firstColumn">
+            <div class="applicationInfo"></div>
+            <div class="menu">
+                <button class="btnMenu btnGroup">Grupa</button>
+                <button class="btnMenu btnPrice">Opłaty</button>
+                <button class="btnMenu btnPrint">Wydruki</button>
+                <button class="btnDarkLightMode btnMenu">Tryb ciemny</button>
+            </div>
+        </div>
+        <div class="secondColumn hide">
+            <div class="arrow"> <i class="fa-solid fa-circle-arrow-left"></i></div>
+            <div class="template hide">
+                <input type="date" class="date" id="date">
+                <input type="text" id="name" class="inputTitle" placeholder="Wpisz tutuł wydruku">
+                <!-- <input class="inputMessage" value="Wpisz treść wydruku"> -->
+                <textarea class="inputMessage" placeholder="Wpisz treść wydruku"></textarea>
+                <span class="accountBank"></span>
+                <div class="btnsTemp">
+                    <button class="btnTemplate">Zapisz szablon</button>
+                    <button class="btnTemplate btnClean">Wyczyść</button>
+                </div>
+                <div class="underline"></div>
+                <h4>Zapisane szablony</h4>
+                <select name="template" class="savedTemplates">
+                    <option>Wydruk pierwszy za składkę 1</option>
+                    <option>Wydruk pierwszy za składkę 2</option>
+
+                </select>
+            </div>
+
+
+            <div class="priceTitle hide">opłaty
+            </div>
+        </div>
+        <div class="thirdColumn ">
+            <div class="thirdLayout">
+                <div class="main mainStyle ">
+                    <div class="main2 heroBG "></div>
+                    <div class="shadow-bg"></div>
+                    <h2>Wybierz z menu </h2>
+                </div>
+
+
+                <div class="mode printView hide">
+                    <!-- <div> -->
+                    <p class="date"></p>
+                    <p class="titleView">Tu będzie Twój podgląd</p>
+                    <p class="messageView"></p>
+
+                    <!-- </div> -->
+                </div>
+                <div class="btnsToPrint hide">
+                    <button class="btnPrint2">Wydrukuj</button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    </div>
+
+
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+        integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/"
+        crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.es.js"></script> -->
+    <!-- <script  src =" https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js" > </script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/polyfills.umd.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="module" src="./script.js"></script>
+</body>
+
+</html>

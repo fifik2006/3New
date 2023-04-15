@@ -1,0 +1,25 @@
+:root {
+	[data-mode='light'] {
+		--unerlineColor: rgb(228, 244, 241);
+		--mainColor: #b2cbd0;
+		--backgroundColor: rgb(214, 224, 239);
+		--btnColor: rgb(148, 175, 178);
+		--btnHoverColor: rgb(188, 61, 104);
+		--secondColor: rgb(220, 234, 238);
+		--fontColor: #d2c6c6;
+		--thirdColor: rgb(200, 232, 232);
+		--fontColor: #1d1b1b;
+	}
+
+	[data-mode='dark'] {
+		--unerlineColor: rgb(14, 14, 14);
+		--mainColor: #030303;
+		--backgroundColor: rgb(32, 30, 27);
+		--btnColor: rgb(14, 21, 22);
+		--btnHoverColor: rgb(66, 56, 59);
+		--secondColor: rgb(21, 22, 22);
+		--fontColor: #f5ecec;
+		--thirdColor: rgb(14, 21, 21);
+		--fontColor: #aba4a4;
+	}
+}
