@@ -11,7 +11,7 @@
 }
 :root [data-mode=dark] {
   --unerlineColor: rgb(14, 14, 14);
-  --mainColor: #030303;
+  --mainColor: #090202;
   --backgroundColor: rgb(32, 30, 27);
   --btnColor: rgb(14, 21, 22);
   --btnHoverColor: rgb(66, 56, 59);
