@@ -224,7 +224,7 @@ input {
 .inputMessage {
   position: relative;
   min-height: 200px;
-  width: 100%;
+  width: 90%;
   border-radius: 5px;
   border: none;
   word-wrap: break-word;
@@ -307,8 +307,7 @@ input {
 
 textarea {
   position: relative;
-  width: 100px;
-  height: 30px;
+  max-width: 100%;
   background-color: var(--secondColor);
 }
 
