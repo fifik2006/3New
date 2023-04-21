@@ -30,8 +30,12 @@ const btnPr = document.querySelector('.btnPrint2');
 let isVisiblePrintForms = false;
 const thirdSiteToPrintStyle = document.querySelector('.thirdLayoutStyle');
 const btnPrintView = document.querySelector('.btnsToPrint');
+// ---buttony na popupie
 const btnSaveTemplate = document.querySelector('.panel-buttons .save');
+const btnCancelTemplate = document.querySelector('.panel-buttons .cancel');
+//---popup do zapisu szablonu
 const popupTemplate = document.querySelector('.popupSaveTemplate');
+const textAreaTitle = document.querySelector('#titleTemplate');
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -194,8 +198,11 @@ const showThird = (p) => {
 	p.forEach((el) => {});
 };
 
-const showPopup = () => {
-	popupTemplate.style.display = 'flex';
+const showPopup = (popup) => {
+	popup.style.display = 'flex';
+};
+const hidePopup = (popup) => {
+	popup.style.display = 'none';
 };
 
 const btns = [arrow, btnGroup, btnPrice];
@@ -257,4 +264,10 @@ btnPrice.addEventListener('click', () => {
 	hideColumn(printView, 'hide', 'printViewStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
 });
-btnGeneratePrint.addEventListener('click', showPopup);
+btnGeneratePrint.addEventListener('click', () => {
+	showPopup(popupTemplate);
+});
+btnCancelTemplate.addEventListener('click', () => {
+	hidePopup(popupTemplate);
+	cleanForm([textAreaTitle]); // uzycie funckji którs służy do czyszczenia formularzy
+});
