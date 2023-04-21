@@ -39,7 +39,7 @@ const textAreaTitle = document.querySelector('#titleTemplate');
 const error = document.querySelector('.error');
 //---opcje szablonów
 const selectTemplates = document.querySelector('.savedTemplates');
-
+let selectedValue;
 let optionID = 0;
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -219,7 +219,39 @@ const saveTemplates = () => {
 	hidePopup(popupTemplate);
 	cleanForm([textAreaTitle]);
 };
-btnSaveTemplate.addEventListener('click', saveTemplates);
+
+let templateID = 0;
+const createTemplate = () => {
+	const newTemplate = document.createElement('div');
+	newTemplate.classList.add('SaveTemplate');
+	newTemplate.classList.add('hide');
+	const newTemplateDate = document.createElement('p');
+	newTemplateDate.classList.add('dateSave');
+	const newTemplateTitle = document.createElement('p');
+	newTemplateTitle.classList.add('titleViewSave');
+	const newTemplateMessage = document.createElement('p');
+	newTemplateMessage.classList.add('messageViewSave');
+	thirdSiteToPrint.appendChild(newTemplate);
+	newTemplate.setAttribute('id', templateID);
+	newTemplate.appendChild(newTemplateDate);
+	newTemplate.appendChild(newTemplateTitle);
+	newTemplate.appendChild(newTemplateMessage);
+	newTemplateDate.textContent = date.value;
+	newTemplateTitle.textContent = inputTitle.value;
+	newTemplateMessage.textContent = inputMessage.value;
+	templateID++;
+};
+
+//----------tutaj zrobie pokazywanie wartosci szablonów po wybraniu z listy select
+const selectValue = () => {
+	selectedValue = selectTemplates.options[category.selectedIndex].text;
+};
+//przypisanie wartosci ale nie działa, nie wiem jak wywołac konkretną pozycje z listy select
+const showViewFromtemplate = () => {
+	date.value = newTemplateDate.textContent;
+	//inputTitle.value = newTemplateTitle.textContent;
+	inputMessage.value = newTemplateMessage.textContent;
+};
 
 const btns = [arrow, btnGroup, btnPrice];
 
@@ -286,4 +318,7 @@ btnGeneratePrint.addEventListener('click', () => {
 btnCancelTemplate.addEventListener('click', () => {
 	hidePopup(popupTemplate);
 	cleanForm([textAreaTitle]); // uzycie funckji którs służy do czyszczenia formularzy
+});
+btnSaveTemplate.addEventListener('click', () => {
+	saveTemplates(), createTemplate();
 });
