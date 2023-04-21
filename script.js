@@ -36,7 +36,11 @@ const btnCancelTemplate = document.querySelector('.panel-buttons .cancel');
 //---popup do zapisu szablonu
 const popupTemplate = document.querySelector('.popupSaveTemplate');
 const textAreaTitle = document.querySelector('#titleTemplate');
+const error = document.querySelector('.error');
+//---opcje szablonów
+const selectTemplates = document.querySelector('.savedTemplates');
 
+let optionID = 0;
 //doc.save('a4.pdf');
 let doc = new jsPDF();
 function createPdf() {
@@ -203,7 +207,19 @@ const showPopup = (popup) => {
 };
 const hidePopup = (popup) => {
 	popup.style.display = 'none';
+	error.style.visibility = 'hidden'; //czysci error w przypadku gdy wystąpił podczas dodawania formularza
 };
+
+const saveTemplates = () => {
+	const newSelectTemplate = document.createElement('option');
+	newSelectTemplate.innerText = textAreaTitle.value;
+	newSelectTemplate.setAttribute('id', optionID);
+	selectTemplates.appendChild(newSelectTemplate);
+	optionID++;
+	hidePopup(popupTemplate);
+	cleanForm([textAreaTitle]);
+};
+btnSaveTemplate.addEventListener('click', saveTemplates);
 
 const btns = [arrow, btnGroup, btnPrice];
 

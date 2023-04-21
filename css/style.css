@@ -406,6 +406,7 @@ h2 {
 .popupSaveTemplate .error {
   margin-bottom: 20px;
   color: red;
+  visibility: hidden;
 }
 .popupSaveTemplate .icon,
 .popupSaveTemplate i {
