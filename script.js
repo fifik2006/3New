@@ -233,6 +233,10 @@ btnClean.addEventListener('click', (e) => {
 // 	})
 // );
 
+
+
+
+
 btnGroup.addEventListener('click', () => {
 	showColumn(secondColumn, 'hide', 'secondColumnStyle');
 	hideColumn(printView, 'hide', 'printViewStyle');

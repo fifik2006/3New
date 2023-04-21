@@ -33,7 +33,7 @@
                 <textarea class="inputMessage" placeholder="Wpisz treść wydruku"></textarea>
                 <span class="accountBank"></span>
                 <div class="btnsTemp">
-                    <button class="btnTemplate">Zapisz szablon</button>
+                    <button class="btnTemplate btnSaveTemplate">Zapisz szablon</button>
                     <button class="btnTemplate btnClean">Wyczyść</button>
                 </div>
                 <div class="underline"></div>
@@ -69,9 +69,22 @@
                 <div class="btnsToPrint hide">
                     <button class="btnPrint2">Wydrukuj</button>
                 </div>
+
+            
             </div>
 
+            <div class="popupSaveTemplate">
+                <h4>Zapisz szablon wydruku</h4>
+                <label for="titleTemplate">Wpisz nazwę szablonu</label>
+                <textarea id="titleTemplate"></textarea>
+                <p class="error">Uzupełnij wszystkie pola!</p>
+                <div class="panel-buttons">
+                    <button class="save icon"><i class="fas fa-save"></i>Zapisz</button>
+                    <button class="cancel icon"><i class="far fa-window-close"></i>Anuluj</button>
+                </div>
+               
 
+            </div>
         </div>
 
 
