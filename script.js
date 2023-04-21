@@ -9,7 +9,7 @@ const arrow = document.querySelector('.arrow');
 const inputTitle = document.querySelector('.inputTitle');
 const inputMessage = document.querySelector('.inputMessage');
 const thirdSiteToPrint = document.querySelector('.thirdLayout');
-const btnGeneratePrint = document.querySelector('.btnTemplate');
+const btnGeneratePrint = document.querySelector('.btnSaveTemplate');
 const btnClean = document.querySelector('.btnClean');
 const body = document.querySelector('body');
 const btnMode = document.querySelector('.btnDarkLightMode');
@@ -30,6 +30,8 @@ const btnPr = document.querySelector('.btnPrint2');
 let isVisiblePrintForms = false;
 const thirdSiteToPrintStyle = document.querySelector('.thirdLayoutStyle');
 const btnPrintView = document.querySelector('.btnsToPrint');
+const btnSaveTemplate = document.querySelector('.panel-buttons .save');
+const popupTemplate = document.querySelector('.popupSaveTemplate');
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -192,6 +194,10 @@ const showThird = (p) => {
 	p.forEach((el) => {});
 };
 
+const showPopup = () => {
+	popupTemplate.style.display = 'flex';
+};
+
 const btns = [arrow, btnGroup, btnPrice];
 
 btnPrint.addEventListener('click', (element) => {
@@ -233,10 +239,6 @@ btnClean.addEventListener('click', (e) => {
 // 	})
 // );
 
-
-
-
-
 btnGroup.addEventListener('click', () => {
 	showColumn(secondColumn, 'hide', 'secondColumnStyle');
 	hideColumn(printView, 'hide', 'printViewStyle');
@@ -255,3 +257,4 @@ btnPrice.addEventListener('click', () => {
 	hideColumn(printView, 'hide', 'printViewStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
 });
+btnGeneratePrint.addEventListener('click', showPopup);

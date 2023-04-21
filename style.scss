@@ -354,7 +354,8 @@ h2 {
 	color: var(--second-color);
 }
 .popupSaveTemplate {
-	display: flex;
+	//display: flex;
+	display: none;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
