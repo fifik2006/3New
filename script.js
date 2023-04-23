@@ -38,7 +38,7 @@ const popupTemplate = document.querySelector('.popupSaveTemplate');
 const textAreaTitle = document.querySelector('#titleTemplate');
 const error = document.querySelector('.error');
 //---opcje szablonów
-const selectTemplates = document.querySelector('.savedTemplates');
+const selectTemplates = document.querySelector('#savedTemplates');
 let selectedValue;
 let optionID = 0;
 //doc.save('a4.pdf');
@@ -244,8 +244,14 @@ const createTemplate = () => {
 
 //----------tutaj zrobie pokazywanie wartosci szablonów po wybraniu z listy select
 const selectValue = () => {
-	selectedValue = selectTemplates.options[category.selectedIndex].text;
+	console.log(
+		(selectedValue =
+			selectTemplates.options[selectTemplates.selectedIndex].text)
+	);
 };
+
+//selectTemplates.addEventListener('onchange', selectValue);
+
 //przypisanie wartosci ale nie działa, nie wiem jak wywołac konkretną pozycje z listy select
 const showViewFromtemplate = () => {
 	date.value = newTemplateDate.textContent;
@@ -318,6 +324,7 @@ btnGeneratePrint.addEventListener('click', () => {
 btnCancelTemplate.addEventListener('click', () => {
 	hidePopup(popupTemplate);
 	cleanForm([textAreaTitle]); // uzycie funckji którs służy do czyszczenia formularzy
+	selectTemplates.selectedIndex = 0;
 });
 btnSaveTemplate.addEventListener('click', () => {
 	saveTemplates(), createTemplate();
