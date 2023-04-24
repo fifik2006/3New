@@ -39,7 +39,7 @@ const textAreaTitle = document.querySelector('#titleTemplate');
 const error = document.querySelector('.error');
 //---opcje szablonów
 const selectTemplates = document.querySelector('#savedTemplates');
-let selectedValue;
+let selectedValueId;
 let optionID = 0;
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -211,20 +211,25 @@ const hidePopup = (popup) => {
 };
 
 const saveTemplates = () => {
-	const newSelectTemplate = document.createElement('option');
-	newSelectTemplate.innerText = textAreaTitle.value;
-	newSelectTemplate.setAttribute('id', optionID);
-	selectTemplates.appendChild(newSelectTemplate);
-	optionID++;
-	hidePopup(popupTemplate);
-	cleanForm([textAreaTitle]);
+	if (textAreaTitle.value !== '') {
+		const newSelectTemplate = document.createElement('option');
+		newSelectTemplate.innerText = textAreaTitle.value;
+		newSelectTemplate.setAttribute('id', optionID);
+		selectTemplates.appendChild(newSelectTemplate);
+		optionID++;
+		hidePopup(popupTemplate);
+		cleanForm([textAreaTitle]);
+		error.style.visibility = 'hidden';
+	} else {
+		error.style.visibility = 'visible';
+	}
 };
 
 let templateID = 0;
 const createTemplate = () => {
 	const newTemplate = document.createElement('div');
 	newTemplate.classList.add('SaveTemplate');
-	newTemplate.classList.add('hide');
+	//newTemplate.classList.add('hide');
 	const newTemplateDate = document.createElement('p');
 	newTemplateDate.classList.add('dateSave');
 	const newTemplateTitle = document.createElement('p');
@@ -245,18 +250,24 @@ const createTemplate = () => {
 //----------tutaj zrobie pokazywanie wartosci szablonów po wybraniu z listy select
 const selectValue = () => {
 	console.log(
-		(selectedValue =
-			selectTemplates.options[selectTemplates.selectedIndex].text)
+		(selectedValueId =
+			selectTemplates.options[selectTemplates.selectedIndex].id)
 	);
-};
+	showViewFromtemplate();
+	// console.log(date.value)
 
-//selectTemplates.addEventListener('onchange', selectValue);
+	// date.value = newTemplateDate.textContent;
+	// //inputTitle.value = newTemplateTitle.textContent;
+	// inputMessage.value = newTemplateMessage.textContent;
+};
 
 //przypisanie wartosci ale nie działa, nie wiem jak wywołac konkretną pozycje z listy select
 const showViewFromtemplate = () => {
-	date.value = newTemplateDate.textContent;
-	//inputTitle.value = newTemplateTitle.textContent;
-	inputMessage.value = newTemplateMessage.textContent;
+	if (selectedValueId == newTemplateDate.id) {
+		date.value = newTemplateDate.textContent;
+		//inputTitle.value = newTemplateTitle.textContent;
+		inputMessage.value = newTemplateMessage.textContent;
+	}
 };
 
 const btns = [arrow, btnGroup, btnPrice];
