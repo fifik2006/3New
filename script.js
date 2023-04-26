@@ -286,7 +286,7 @@ const selectValue = () => {
 
 	//-----połączenie wybranej option z szablonem zapisanym
 	savedTemplates.forEach((zapisaneTeksty) => {
-		const titleViewSave = document.getElementsByClassName('titleViewSave');
+		const titleViewSave = document.getElementsByClassName('titleViewSave'); //getElementsByClassName ponieważ to są żywe kolekcje inaczej funkcje nie działały na elementach dynamicznie dodanych
 		if (
 			zapisaneTeksty.id ==
 			selectTemplates.options[selectTemplates.selectedIndex].id
@@ -297,19 +297,17 @@ const selectValue = () => {
 					temp.parentElement.id ==
 					selectTemplates.options[selectTemplates.selectedIndex].id
 				) {
-					console.log(temp.parentElement.id);
+					date.value = zapisaneTeksty.children[0].textContent;
+					inputTitle.value = zapisaneTeksty.children[1].textContent;
+					inputMessage.value = zapisaneTeksty.children[2].textContent;
 				}
 			});
 
 			// console.log(`wybrany id options ${selectedValueId} i template ${zapisaneTeksty.innerHTML} i dziecko pierwsze ${zapisaneTeksty.children[0].textContent} i dziecko drugie ${zapisaneTeksty.children[1].textContent} i dziecko trzecie ${zapisaneTeksty.children[2].textContent}
 			// `);
-
-			date.value = zapisaneTeksty.children[0].textContent;
-			inputTitle.value = zapisaneTeksty.children[1].textContent;
-			inputMessage.value = zapisaneTeksty.children[2].textContent;
 		}
 	});
-	setPrintValue();
+	setPrintValue(); //uzupelnienie wartosciami podglądu
 };
 
 const btns = [arrow, btnGroup, btnPrice];
