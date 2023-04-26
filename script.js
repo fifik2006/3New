@@ -231,6 +231,7 @@ const saveTemplates = () => {
 	}
 };
 
+//--stworzenie nowego szablonu, dane wprowadzane do inputa zapiszą się jako nowy szablon do wykorzystania później
 let templateID = 0;
 const createTemplate = () => {
 	const newTemplate = document.createElement('div');
@@ -257,11 +258,13 @@ const createTemplate = () => {
 	messageP.textContent = '';
 };
 
+//-- uzupełnianie wartosci na podglądzie o tresci które zostały przekazane z szablonu do inputów
 const setPrintValue = () => {
 	titleP.textContent = inputTitle.value;
 	messageP.textContent = inputMessage.value;
 	pdata.textContent = date.value;
 };
+//--pokazywanie popupu do tworzenia szablonu + sprawdzanie czy pola nie są puste
 const checkForm = () => {
 	if (inputTitle.value !== '' && inputMessage.value !== '') {
 		showPopup(popupTemplate);
@@ -270,18 +273,18 @@ const checkForm = () => {
 	}
 };
 
-//----------tutaj zrobie pokazywanie wartosci szablonów po wybraniu z listy select
+//----------tutaj pokazywanie wartosci szablonów po wybraniu z listy select
 const selectValue = () => {
-	console.log(
-		(selectedValueId =
-			selectTemplates.options[selectTemplates.selectedIndex].id)
-	);
-	console.log(
-		(selectedValueText =
-			selectTemplates.options[selectTemplates.selectedIndex].text)
-	);
+	// console.log(
+	// 	(selectedValueId =
+	// 		selectTemplates.options[selectTemplates.selectedIndex].id)
+	// );
+	// console.log(
+	// 	(selectedValueText =
+	// 		selectTemplates.options[selectTemplates.selectedIndex].text)
+	// );
 
-	//-----tu próbuje połączyc wybrany option z szablonem zapisanym
+	//-----połączenie wybranej option z szablonem zapisanym
 	savedTemplates.forEach((zapisaneTeksty) => {
 		const titleViewSave = document.getElementsByClassName('titleViewSave');
 		if (
@@ -289,6 +292,7 @@ const selectValue = () => {
 			selectTemplates.options[selectTemplates.selectedIndex].id
 		) {
 			titleViewSave.forEach((temp) => {
+				//dostaję się do tytułu, który jest pierszy na liscie a potem do rodzica i porównuje id rodzica z id opcji w select
 				if (
 					temp.parentElement.id ==
 					selectTemplates.options[selectTemplates.selectedIndex].id
@@ -297,8 +301,8 @@ const selectValue = () => {
 				}
 			});
 
-			console.log(`wybrany id options ${selectedValueId} i template ${zapisaneTeksty.innerHTML} i dziecko pierwsze ${zapisaneTeksty.children[0].textContent} i dziecko drugie ${zapisaneTeksty.children[1].textContent} i dziecko trzecie ${zapisaneTeksty.children[2].textContent}
-			`);
+			// console.log(`wybrany id options ${selectedValueId} i template ${zapisaneTeksty.innerHTML} i dziecko pierwsze ${zapisaneTeksty.children[0].textContent} i dziecko drugie ${zapisaneTeksty.children[1].textContent} i dziecko trzecie ${zapisaneTeksty.children[2].textContent}
+			// `);
 
 			date.value = zapisaneTeksty.children[0].textContent;
 			inputTitle.value = zapisaneTeksty.children[1].textContent;
@@ -306,7 +310,6 @@ const selectValue = () => {
 		}
 	});
 	setPrintValue();
-	
 };
 
 const btns = [arrow, btnGroup, btnPrice];
