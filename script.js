@@ -37,9 +37,13 @@ const btnCancelTemplate = document.querySelector('.panel-buttons .cancel');
 const popupTemplate = document.querySelector('.popupSaveTemplate');
 const textAreaTitle = document.querySelector('#titleTemplate');
 const error = document.querySelector('.error');
+const errorForm = document.querySelector('.errorForm');
 //---opcje szablonów
 const selectTemplates = document.querySelector('#savedTemplates');
+
+const savedTemplates = document.getElementsByClassName('SaveTemplate');
 let selectedValueId;
+let selectedValueText;
 let optionID = 0;
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -204,6 +208,7 @@ const showThird = (p) => {
 
 const showPopup = (popup) => {
 	popup.style.display = 'flex';
+	errorForm.style.visibility = 'hidden';
 };
 const hidePopup = (popup) => {
 	popup.style.display = 'none';
@@ -220,6 +225,7 @@ const saveTemplates = () => {
 		hidePopup(popupTemplate);
 		cleanForm([textAreaTitle]);
 		error.style.visibility = 'hidden';
+		createTemplate();
 	} else {
 		error.style.visibility = 'visible';
 	}
@@ -245,6 +251,23 @@ const createTemplate = () => {
 	newTemplateTitle.textContent = inputTitle.value;
 	newTemplateMessage.textContent = inputMessage.value;
 	templateID++;
+	cleanForm([date, inputTitle, inputMessage]);
+	//defaultValueView(titleP, messageP, pdata);
+	titleP.textContent = '';
+	messageP.textContent = '';
+};
+
+const setPrintValue = () => {
+	titleP.textContent = inputTitle.value;
+	messageP.textContent = inputMessage.value;
+	pdata.textContent = date.value;
+};
+const checkForm = () => {
+	if (inputTitle.value !== '' && inputMessage.value !== '') {
+		showPopup(popupTemplate);
+	} else {
+		errorForm.style.visibility = 'visible';
+	}
 };
 
 //----------tutaj zrobie pokazywanie wartosci szablonów po wybraniu z listy select
@@ -253,21 +276,37 @@ const selectValue = () => {
 		(selectedValueId =
 			selectTemplates.options[selectTemplates.selectedIndex].id)
 	);
-	showViewFromtemplate();
-	// console.log(date.value)
+	console.log(
+		(selectedValueText =
+			selectTemplates.options[selectTemplates.selectedIndex].text)
+	);
 
-	// date.value = newTemplateDate.textContent;
-	// //inputTitle.value = newTemplateTitle.textContent;
-	// inputMessage.value = newTemplateMessage.textContent;
-};
+	//-----tu próbuje połączyc wybrany option z szablonem zapisanym
+	savedTemplates.forEach((zapisaneTeksty) => {
+		const titleViewSave = document.getElementsByClassName('titleViewSave');
+		if (
+			zapisaneTeksty.id ==
+			selectTemplates.options[selectTemplates.selectedIndex].id
+		) {
+			titleViewSave.forEach((temp) => {
+				if (
+					temp.parentElement.id ==
+					selectTemplates.options[selectTemplates.selectedIndex].id
+				) {
+					console.log(temp.parentElement.id);
+				}
+			});
 
-//przypisanie wartosci ale nie działa, nie wiem jak wywołac konkretną pozycje z listy select
-const showViewFromtemplate = () => {
-	if (selectedValueId == newTemplateDate.id) {
-		date.value = newTemplateDate.textContent;
-		//inputTitle.value = newTemplateTitle.textContent;
-		inputMessage.value = newTemplateMessage.textContent;
-	}
+			console.log(`wybrany id options ${selectedValueId} i template ${zapisaneTeksty.innerHTML} i dziecko pierwsze ${zapisaneTeksty.children[0].textContent} i dziecko drugie ${zapisaneTeksty.children[1].textContent} i dziecko trzecie ${zapisaneTeksty.children[2].textContent}
+			`);
+
+			date.value = zapisaneTeksty.children[0].textContent;
+			inputTitle.value = zapisaneTeksty.children[1].textContent;
+			inputMessage.value = zapisaneTeksty.children[2].textContent;
+		}
+	});
+	setPrintValue();
+	
 };
 
 const btns = [arrow, btnGroup, btnPrice];
@@ -302,6 +341,7 @@ btnClean.addEventListener('click', (e) => {
 	//e.preventDefault(); //chcemy zeby przycisk nie przeładowywał strony
 	cleanForm([date, inputTitle, inputMessage]); //funkcja bedzie wywoływana i jako argumety bedzie po kolej przyjmowac wszystkie elementy tablicy, beda one argumentem który u nas nazywa sie input
 	defaultValueView(titleP, messageP, pdata); //po wyczyszczeniu formularza wydruku domyślne wartości dla trzeciej kolumny
+	errorForm.style.visibility = 'hidden';
 });
 
 //--otworzyc 2gą kolumnę po kliknieniu jakiegokolwiek przycisku z menu
@@ -330,7 +370,7 @@ btnPrice.addEventListener('click', () => {
 	hideColumn(btnPrintView, 'hide', 'btnsView');
 });
 btnGeneratePrint.addEventListener('click', () => {
-	showPopup(popupTemplate);
+	checkForm();
 });
 btnCancelTemplate.addEventListener('click', () => {
 	hidePopup(popupTemplate);
@@ -338,5 +378,5 @@ btnCancelTemplate.addEventListener('click', () => {
 	selectTemplates.selectedIndex = 0;
 });
 btnSaveTemplate.addEventListener('click', () => {
-	saveTemplates(), createTemplate();
+	saveTemplates();
 });

@@ -406,3 +406,9 @@ h2 {
 		transition: bacground-color 0.3s, color 0.3s;
 	}
 }
+.errorForm {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: red;
+	visibility: hidden; //bedziemy sterowac błędem w js
+}

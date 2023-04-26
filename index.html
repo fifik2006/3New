@@ -36,13 +36,14 @@
                     <button class="btnTemplate btnSaveTemplate">Zapisz szablon</button>
                     <button class="btnTemplate btnClean">Wyczyść</button>
                 </div>
+                <p class="errorForm">Uzupełnij wszystkie pola!</p>
                 <div class="underline"></div>
                 <h4>Zapisane szablony</h4>
                 <select id="savedTemplates" onchange="selectValue()">
                     <option value="0" disabled selected>--wybierz kategorię -</option>
-                    <option value="1">test</option>
-                    <option value="1">test1</option>
-                    <option value="1">test2</option>
+                    <option value="1" id="10">test</option>
+                    <option value="1" id="11">test1</option>
+                    <option value="1" id="12">test2</option>
 
 
                 </select>
@@ -70,11 +71,25 @@
 
                 </div>
                 <!--tu bede trzymac zapisane szablony -->
-                <div class="SaveTemplate hide">
+                <div class="SaveTemplate hide" id="10">
 
-                    <p class="dateSave"></p>
-                    <p class="titleViewSave"></p>
-                    <p class="messageViewSave"></p>
+                    <p class="dateSave">2020-05-06</p>
+                    <p class="titleViewSave">zero title</p>
+                    <p class="messageViewSave"> zero message</p>
+
+                </div>
+                <div class="SaveTemplate hide" id="11">
+
+                    <p class="dateSave">2020-05-06</p>
+                    <p class="titleViewSave">jeden tit</p>
+                    <p class="messageViewSave">jeden message</p>
+
+                </div>
+                <div class="SaveTemplate hide" id="12">
+
+                    <p class="dateSave">2020-05-06</p>
+                    <p class="titleViewSave">dwa tit</p>
+                    <p class="messageViewSave">dwa message</p>
 
                 </div>
 
