@@ -235,7 +235,7 @@ let templateID = 0;
 const createTemplate = () => {
 	const newTemplate = document.createElement('div');
 	newTemplate.classList.add('SaveTemplate');
-	//newTemplate.classList.add('hide');
+	newTemplate.classList.add('hide');
 	const newTemplateDate = document.createElement('p');
 	newTemplateDate.classList.add('dateSave');
 	const newTemplateTitle = document.createElement('p');
