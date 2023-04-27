@@ -310,6 +310,11 @@ const selectValue = () => {
 	setPrintValue(); //uzupelnienie wartosciami podglądu
 };
 
+const checkDefaultOptions = () => {
+	//ustawienie domyślnej opcji wybierz kategorię
+	selectTemplates.selectedIndex = 0;
+};
+
 const btns = [arrow, btnGroup, btnPrice];
 
 btnPrint.addEventListener('click', (element) => {
@@ -343,6 +348,7 @@ btnClean.addEventListener('click', (e) => {
 	cleanForm([date, inputTitle, inputMessage]); //funkcja bedzie wywoływana i jako argumety bedzie po kolej przyjmowac wszystkie elementy tablicy, beda one argumentem który u nas nazywa sie input
 	defaultValueView(titleP, messageP, pdata); //po wyczyszczeniu formularza wydruku domyślne wartości dla trzeciej kolumny
 	errorForm.style.visibility = 'hidden';
+	checkDefaultOptions();
 });
 
 //--otworzyc 2gą kolumnę po kliknieniu jakiegokolwiek przycisku z menu
