@@ -365,6 +365,8 @@ btnCancelTemplate.addEventListener('click', () => {
 	hidePopup(popupTemplate);
 	cleanForm([textAreaTitle]); // uzycie funckji którs służy do czyszczenia formularzy
 	selectTemplates.selectedIndex = 0;
+	cleanForm([date, inputTitle, inputMessage]);
+	defaultValueView(titleP, messageP, pdata);
 });
 btnSaveTemplate.addEventListener('click', () => {
 	saveTemplates();
