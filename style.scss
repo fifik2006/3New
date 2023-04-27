@@ -7,6 +7,7 @@
 }
 body {
 	background-color: var(--secondColor);
+	font-family: 'Lato', sans-serif;
 }
 
 .hide {
@@ -104,7 +105,6 @@ body {
 		//background-color: red;
 		//height: 200px;
 		border-radius: 5px;
-		
 	}
 	.underline {
 		margin-top: 10px;
@@ -138,6 +138,7 @@ body {
 		color: var(--fontColor);
 		margin-top: 10px;
 		box-shadow: 0 0 10px rgb(22, 10, 10);
+		font-size: 15px;
 	}
 }
 .arrow {
@@ -193,6 +194,7 @@ input {
 	border: none;
 	border-radius: 5px;
 	text-transform: uppercase;
+	font-size: 15px;
 }
 .inputTitle {
 	position: relative;
@@ -206,6 +208,7 @@ input {
 	color: var(--fontColor);
 }
 .inputMessage {
+	padding-top: 20px;
 	position: relative;
 	min-height: 200px;
 	width: 100%;
@@ -227,8 +230,6 @@ input {
 	border: none;
 	align-items: center;
 	color: var(--fontColor);
-	
-	
 }
 .btnsView {
 	position: relative;
@@ -236,7 +237,6 @@ input {
 	justify-content: space-between;
 	margin-bottom: 10px;
 	margin: 10px;
-	
 }
 
 .thirdColumn {
@@ -246,7 +246,6 @@ input {
 	background-color: var(--secondColor);
 	padding: 5px;
 	.thirdLayout {
-		
 		position: relative;
 		//width: 100%;
 		//height: 100%;
@@ -326,6 +325,7 @@ p.date {
 	justify-content: center;
 	align-items: center;
 	color: var(--fontColor);
+	font-size: 20px;
 }
 .mainStyle {
 	position: relative;
@@ -344,7 +344,7 @@ p.date {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-image: url(../img/main.jpg);
+	//background-image: url(../img/main.jpg);
 	border-radius: 10px;
 	z-index: 0;
 }
@@ -385,7 +385,7 @@ h2 {
 		width: 100%;
 		max-width: 90%;
 		max-height: 600px;
-		font-size: 16px;
+		font-size: 20px;
 		border-radius: 5px;
 		border: 1px solid black;
 	}
