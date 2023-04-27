@@ -65,6 +65,7 @@ body {
 		background-color: var(--btnColor);
 		border: none;
 		color: var(--fontColor);
+		box-shadow: 0 0 10px rgb(22, 10, 10);
 	}
 	.btnMenu:hover {
 		font-size: 20px;
@@ -81,13 +82,14 @@ body {
 
 .secondColumnStyle {
 	position: relative;
-	background-color: var(--thirdColor);
+	//background-color: var(--thirdColor);
 	display: flex;
 	flex-direction: column;
 	width: 30%;
 	min-width: 250px;
 	min-height: 100vh;
 	padding: 8px;
+	box-shadow: 0px 0px 5px rgba(22, 10, 10, 0.8);
 
 	//padding: 10px;
 	//margin-left: 5px;
@@ -102,6 +104,7 @@ body {
 		//background-color: red;
 		//height: 200px;
 		border-radius: 5px;
+		
 	}
 	.underline {
 		margin-top: 10px;
@@ -134,6 +137,7 @@ body {
 		border: none;
 		color: var(--fontColor);
 		margin-top: 10px;
+		box-shadow: 0 0 10px rgb(22, 10, 10);
 	}
 }
 .arrow {
@@ -142,9 +146,9 @@ body {
 	i {
 		padding: 10px;
 		color: black;
-		font-size: 30px;
+		font-size: 50px;
 
-		color: var(--mainColor);
+		color: var(--thirdColor);
 	}
 }
 
@@ -223,6 +227,8 @@ input {
 	border: none;
 	align-items: center;
 	color: var(--fontColor);
+	
+	
 }
 .btnsView {
 	position: relative;
@@ -230,6 +236,7 @@ input {
 	justify-content: space-between;
 	margin-bottom: 10px;
 	margin: 10px;
+	
 }
 
 .thirdColumn {
@@ -239,6 +246,7 @@ input {
 	background-color: var(--secondColor);
 	padding: 5px;
 	.thirdLayout {
+		
 		position: relative;
 		//width: 100%;
 		//height: 100%;
@@ -250,7 +258,7 @@ input {
 		position: relative;
 		//width: 100%;
 		min-height: 100vh;
-		background-color: var(--mainColor);
+		//background-color: var(--mainColor);
 		padding: 5px;
 		padding: 30px;
 	}
@@ -265,6 +273,7 @@ input {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
+		box-shadow: 0 0 10px rgb(128, 123, 123);
 
 		p {
 			text-align: center;

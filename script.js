@@ -40,11 +40,13 @@ const error = document.querySelector('.error');
 const errorForm = document.querySelector('.errorForm');
 //---opcje szablonów
 const selectTemplates = document.querySelector('#savedTemplates');
+const btns = [arrow, btnGroup, btnPrice];
 
 const savedTemplates = document.getElementsByClassName('SaveTemplate');
 let selectedValueId;
 let selectedValueText;
 let optionID = 0;
+
 //doc.save('a4.pdf');
 let doc = new jsPDF();
 function createPdf() {
@@ -116,10 +118,7 @@ function createPdf2() {
 		background: '#e5e5e5',
 	};
 	doc.setTextColor(0, 12, 100, 49);
-	//doc.text("moj tekst co nie chce sie udac", 10, 20);
-	//doc.save('myDok.pdf');
 
-	//doc.fromHTML(printView, 10, 10);
 	html2pdf().from(printView).set(format).save();
 }
 const controller = new AbortController();
@@ -157,16 +156,6 @@ const addPrintViewTemplate = () => {
 		messageP.textContent = inputMessage.value;
 	}
 };
-
-class AddPrintTemplate {
-	constructor(title, message) {
-		this.title = title;
-		this.message = message;
-	}
-
-	save() {}
-}
-
 //--funkcja przypisywania wartosci z inputa do divów
 const writeTextUptoDate = (mes, e) => {
 	mes.textContent = e.target.value;
@@ -235,27 +224,31 @@ const saveTemplates = () => {
 let templateID = 0;
 const createTemplate = () => {
 	const newTemplate = document.createElement('div');
+	const newTemplateDate = document.createElement('p');
+	const newTemplateTitle = document.createElement('p');
+	const newTemplateMessage = document.createElement('p');
+
 	newTemplate.classList.add('SaveTemplate');
 	newTemplate.classList.add('hide');
-	const newTemplateDate = document.createElement('p');
 	newTemplateDate.classList.add('dateSave');
-	const newTemplateTitle = document.createElement('p');
 	newTemplateTitle.classList.add('titleViewSave');
-	const newTemplateMessage = document.createElement('p');
 	newTemplateMessage.classList.add('messageViewSave');
+
 	thirdSiteToPrint.appendChild(newTemplate);
 	newTemplate.setAttribute('id', templateID);
 	newTemplate.appendChild(newTemplateDate);
 	newTemplate.appendChild(newTemplateTitle);
 	newTemplate.appendChild(newTemplateMessage);
+
 	newTemplateDate.textContent = date.value;
 	newTemplateTitle.textContent = inputTitle.value;
 	newTemplateMessage.textContent = inputMessage.value;
 	templateID++;
-	cleanForm([date, inputTitle, inputMessage]);
-	//defaultValueView(titleP, messageP, pdata);
 	titleP.textContent = '';
 	messageP.textContent = '';
+
+	cleanForm([date, inputTitle, inputMessage]);
+	//defaultValueView(titleP, messageP, pdata);
 };
 
 //-- uzupełnianie wartosci na podglądzie o tresci które zostały przekazane z szablonu do inputów
@@ -275,15 +268,6 @@ const checkForm = () => {
 
 //----------tutaj pokazywanie wartosci szablonów po wybraniu z listy select
 const selectValue = () => {
-	// console.log(
-	// 	(selectedValueId =
-	// 		selectTemplates.options[selectTemplates.selectedIndex].id)
-	// );
-	// console.log(
-	// 	(selectedValueText =
-	// 		selectTemplates.options[selectTemplates.selectedIndex].text)
-	// );
-
 	//-----połączenie wybranej option z szablonem zapisanym
 	savedTemplates.forEach((zapisaneTeksty) => {
 		const titleViewSave = document.getElementsByClassName('titleViewSave'); //getElementsByClassName ponieważ to są żywe kolekcje inaczej funkcje nie działały na elementach dynamicznie dodanych
@@ -314,8 +298,6 @@ const checkDefaultOptions = () => {
 	//ustawienie domyślnej opcji wybierz kategorię
 	selectTemplates.selectedIndex = 0;
 };
-
-const btns = [arrow, btnGroup, btnPrice];
 
 btnPrint.addEventListener('click', (element) => {
 	showColumn(secondColumn, 'hide', 'secondColumnStyle');
@@ -386,4 +368,5 @@ btnCancelTemplate.addEventListener('click', () => {
 });
 btnSaveTemplate.addEventListener('click', () => {
 	saveTemplates();
+	checkDefaultOptions();
 });
