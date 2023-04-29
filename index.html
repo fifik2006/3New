@@ -44,7 +44,7 @@
                 </div>
                 <p class="errorForm">Uzupełnij wszystkie pola!</p>
                 <div class="underline"></div>
-                <h4>Zapisane szablony</h4>
+                <h4>Zapisane szablony <i class="fa-solid fa-trash"></i></h4>
                 <select id="savedTemplates" onchange="selectValue()">
                     <option value="0" disabled selected>----wybierz kategorię ----</option>
                     <option value="1" id="10">test <i class="fas fa-times icon"></i></option>
@@ -56,74 +56,99 @@
             </div>
 
 
-            <div class="priceTitle hide">opłaty
+            <div class="popupDeletetemplate">
+                <h4>Usuń szablony</h4>
+                <div class="check">
+                    <div class="check1"><label for="zazn">Test 1</label>
+                        <input type="checkbox" id="zazn">
+                    </div>
+                        <div class="check1"><label for="zazn1">Test 2</label>
+                            <input type="checkbox" id="zazn1">
+                        </div>
+                        <div class="check1"><label for="zazn1">Test 2</label>
+                            <input type="checkbox" id="zazn1">
+                        </div>
+
+
+                    </div>
+
+                    <div class="panel-buttons-list">
+                        <button class="delete icon"><i class="fa-solid fa-trash"></i>Usuń</button>
+                        <button class="cancel icon"><i class="far fa-window-close"></i>Anuluj</button>
+                    </div>
+
+
+                </div>
+
+
+                <div class="priceTitle hide">opłaty
+                </div>
             </div>
+            <div class="thirdColumn ">
+                <div class="thirdLayout">
+                    <div class="main mainStyle ">
+                        <div class="main2 heroBG "></div>
+                        <div class="shadow-bg"></div>
+                        <h2>Wybierz z menu </h2>
+                    </div>
+
+
+                    <div class="mode printView hide">
+
+                        <p class="date"></p>
+                        <p class="titleView">Tu będzie Twój podgląd</p>
+                        <p class="messageView"></p>
+
+
+                    </div>
+                    <!--tu bede trzymac zapisane szablony -->
+                    <div class="SaveTemplate hide" id="10">
+
+                        <p class="dateSave">2020-05-06</p>
+                        <p class="titleViewSave">zero title</p>
+                        <p class="messageViewSave"> zero message</p>
+
+                    </div>
+                    <div class="SaveTemplate hide" id="11">
+
+                        <p class="dateSave">2020-05-06</p>
+                        <p class="titleViewSave">jeden tit</p>
+                        <p class="messageViewSave">jeden message</p>
+
+                    </div>
+                    <div class="SaveTemplate hide" id="12">
+
+                        <p class="dateSave">2020-05-06</p>
+                        <p class="titleViewSave">dwa tit</p>
+                        <p class="messageViewSave">dwa message</p>
+
+                    </div>
+
+
+
+                    <div class="btnsToPrint hide">
+                        <button class="btnPrint2">Pobierz PDF</button>
+                    </div>
+
+
+                </div>
+
+                <div class="popupSaveTemplate">
+                    <h4>Zapisz szablon wydruku</h4>
+                    <label for="titleTemplate">Wpisz nazwę szablonu</label>
+                    <textarea id="titleTemplate"></textarea>
+                    <p class="error">Uzupełnij wszystkie pola!</p>
+                    <div class="panel-buttons">
+                        <button class="save icon"><i class="fas fa-save"></i>Zapisz</button>
+                        <button class="cancel icon"><i class="far fa-window-close"></i>Anuluj</button>
+                    </div>
+
+
+                </div>
+            </div>
+
+
         </div>
-        <div class="thirdColumn ">
-            <div class="thirdLayout">
-                <div class="main mainStyle ">
-                    <div class="main2 heroBG "></div>
-                    <div class="shadow-bg"></div>
-                    <h2>Wybierz z menu </h2>
-                </div>
-
-
-                <div class="mode printView hide">
-
-                    <p class="date"></p>
-                    <p class="titleView">Tu będzie Twój podgląd</p>
-                    <p class="messageView"></p>
-
-
-                </div>
-                <!--tu bede trzymac zapisane szablony -->
-                <div class="SaveTemplate hide" id="10">
-
-                    <p class="dateSave">2020-05-06</p>
-                    <p class="titleViewSave">zero title</p>
-                    <p class="messageViewSave"> zero message</p>
-
-                </div>
-                <div class="SaveTemplate hide" id="11">
-
-                    <p class="dateSave">2020-05-06</p>
-                    <p class="titleViewSave">jeden tit</p>
-                    <p class="messageViewSave">jeden message</p>
-
-                </div>
-                <div class="SaveTemplate hide" id="12">
-
-                    <p class="dateSave">2020-05-06</p>
-                    <p class="titleViewSave">dwa tit</p>
-                    <p class="messageViewSave">dwa message</p>
-
-                </div>
-
-
-
-                <div class="btnsToPrint hide">
-                    <button class="btnPrint2">Pobierz PDF</button>
-                </div>
-
-
-            </div>
-
-            <div class="popupSaveTemplate">
-                <h4>Zapisz szablon wydruku</h4>
-                <label for="titleTemplate">Wpisz nazwę szablonu</label>
-                <textarea id="titleTemplate"></textarea>
-                <p class="error">Uzupełnij wszystkie pola!</p>
-                <div class="panel-buttons">
-                    <button class="save icon"><i class="fas fa-save"></i>Zapisz</button>
-                    <button class="cancel icon"><i class="far fa-window-close"></i>Anuluj</button>
-                </div>
-
-
-            </div>
-        </div>
-
-
-    </div>
 
     </div>
 

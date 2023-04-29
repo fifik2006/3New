@@ -47,6 +47,13 @@ let selectedValueId;
 let selectedValueText;
 let optionID = 0;
 
+//popup do usuwania szablonów
+const trashButton = document.querySelector('.template .fa-trash');
+const popupDeletetemplate = document.querySelector('.popupDeletetemplate');
+const btnCancelPopupRemove = document.querySelector(
+	'.panel-buttons-list .cancel'
+);
+
 //doc.save('a4.pdf');
 let doc = new jsPDF();
 function createPdf() {
@@ -371,4 +378,11 @@ btnCancelTemplate.addEventListener('click', () => {
 btnSaveTemplate.addEventListener('click', () => {
 	saveTemplates();
 	checkDefaultOptions();
+});
+trashButton.addEventListener('click', () => {
+	showPopup(popupDeletetemplate);
+});
+
+btnCancelPopupRemove.addEventListener('click', () => {
+	hidePopup(popupDeletetemplate);
 });
