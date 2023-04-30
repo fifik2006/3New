@@ -46,13 +46,17 @@ const savedTemplates = document.getElementsByClassName('SaveTemplate');
 let selectedValueId;
 let selectedValueText;
 let optionID = 0;
+let templateID = 0;
 
 //popup do usuwania szablonów
+const checkList = document.querySelector('.check');
 const trashButton = document.querySelector('.template .fa-trash');
 const popupDeletetemplate = document.querySelector('.popupDeletetemplate');
 const btnCancelPopupRemove = document.querySelector(
 	'.panel-buttons-list .cancel'
 );
+const btnDeleteTemplate = document.querySelector('.panel-buttons-list .delete');
+const option = document.getElementById('option');
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -210,25 +214,40 @@ const hidePopup = (popup) => {
 	popup.style.display = 'none';
 	error.style.visibility = 'hidden'; //czysci error w przypadku gdy wystąpił podczas dodawania formularza
 };
-
+let checkID = 0;
 const saveTemplates = () => {
 	if (textAreaTitle.value !== '') {
 		const newSelectTemplate = document.createElement('option');
 		newSelectTemplate.innerText = textAreaTitle.value;
-		newSelectTemplate.setAttribute('id', optionID);
+		newSelectTemplate.setAttribute('id', templateID);
 		selectTemplates.appendChild(newSelectTemplate);
-		optionID++;
+
 		hidePopup(popupTemplate);
 		cleanForm([textAreaTitle]);
 		error.style.visibility = 'hidden';
 		createTemplate();
+		const fillListTempletoToRemove = () => {
+			const newLabelList = document.createElement('div');
+			newLabelList.classList.add('check1');
+			option.appendChild(newLabelList);
+			optionID = templateID;
+			newLabelList.setAttribute('id', optionID);
+			// const newOptionToRemoveLabel = document.createElement('p');
+			// newLabelList.appendChild(newOptionToRemoveLabel);
+			newLabelList.innerHTML = `<p>${newSelectTemplate.innerText}</p><i onclick="removeTemplate(${templateID})" class="fas fa-times icon"></i>`;
+			//newOptionToRemoveLabel.textContent = newSelectTemplate.value;
+		};
+		//optionID++;
+
+		fillListTempletoToRemove();
+		templateID++;
 	} else {
 		error.style.visibility = 'visible';
 	}
 };
 
 //--stworzenie nowego szablonu, dane wprowadzane do inputa zapiszą się jako nowy szablon do wykorzystania później
-let templateID = 0;
+
 const createTemplate = () => {
 	const newTemplate = document.createElement('div');
 	const newTemplateDate = document.createElement('p');
@@ -250,7 +269,7 @@ const createTemplate = () => {
 	newTemplateDate.textContent = date.value;
 	newTemplateTitle.textContent = inputTitle.value;
 	newTemplateMessage.textContent = inputMessage.value;
-	templateID++;
+	//templateID++;
 	titleP.textContent = '';
 	messageP.textContent = '';
 
@@ -276,8 +295,9 @@ const checkForm = () => {
 //----------tutaj pokazywanie wartosci szablonów po wybraniu z listy select
 const selectValue = () => {
 	//-----połączenie wybranej option z szablonem zapisanym
+	const titleViewSave = document.getElementsByClassName('titleViewSave');
 	savedTemplates.forEach((zapisaneTeksty) => {
-		const titleViewSave = document.getElementsByClassName('titleViewSave'); //getElementsByClassName ponieważ to są żywe kolekcje inaczej funkcje nie działały na elementach dynamicznie dodanych
+		//getElementsByClassName ponieważ to są żywe kolekcje inaczej funkcje nie działały na elementach dynamicznie dodanych
 		if (
 			zapisaneTeksty.id ==
 			selectTemplates.options[selectTemplates.selectedIndex].id
@@ -305,6 +325,25 @@ const checkDefaultOptions = () => {
 	//ustawienie domyślnej opcji wybierz kategorię
 	selectTemplates.selectedIndex = 0;
 };
+
+const removeTemp = () => {};
+//----usuwanie szablonu, narazie działa tylko usuwanie z listy szablonów ale zpopupa nie
+const removeTemplate = (id) => {
+	const templateToRemove = document.getElementById(id);
+	selectTemplates.removeChild(templateToRemove);
+	console.log(templateToRemove);
+	//console.log(popupDeletetemplate.children[1].children.id[(templateID)]);
+	// const popupListToremove = option.querySelector(id);
+	// console.log(popupListToremove);
+};
+
+const removeOptionFromList = (id) => {
+	//const popupListToremove = document.getElementsByTagName(newid);
+	console.log(option.children);
+	//option.removeChild(id);
+};
+
+//btnDeleteTemplate.addEventListener('click', removeTemp);
 
 btnPrint.addEventListener('click', (element) => {
 	showColumn(secondColumn, 'hide', 'secondColumnStyle');
@@ -378,9 +417,11 @@ btnCancelTemplate.addEventListener('click', () => {
 btnSaveTemplate.addEventListener('click', () => {
 	saveTemplates();
 	checkDefaultOptions();
+	//fillListTempletoToRemove();
 });
 trashButton.addEventListener('click', () => {
 	showPopup(popupDeletetemplate);
+	//fillListTempletoToRemove();
 });
 
 btnCancelPopupRemove.addEventListener('click', () => {

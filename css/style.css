@@ -467,8 +467,11 @@ h2 {
 }
 .popupDeletetemplate i {
   margin-right: 7px;
-  font-size: 15px;
+  font-size: 20px;
   color: #666;
+}
+.popupDeletetemplate .check1 {
+  display: flex;
 }
 .popupDeletetemplate .panel-buttons-list {
   display: flex;
