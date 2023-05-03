@@ -39,14 +39,15 @@ const textAreaTitle = document.querySelector('#titleTemplate');
 const error = document.querySelector('.error');
 const errorForm = document.querySelector('.errorForm');
 //---opcje szablonów
-const selectTemplates = document.querySelector('#savedTemplates');
+const selectTemplates = document.querySelector('#savedTemplates'); //lista rozwijana szablonów
 const btns = [arrow, btnGroup, btnPrice];
 
-const savedTemplates = document.getElementsByClassName('SaveTemplate');
+const savedTemplates = document.getElementsByClassName('SaveTemplate'); //szablony z wartosciami, nie lista rozwijana szablonów
 let selectedValueId;
 let selectedValueText;
-let optionID = 0;
+
 let templateID = 0;
+let templateListID;
 
 //popup do usuwania szablonów
 const checkList = document.querySelector('.check');
@@ -57,6 +58,7 @@ const btnCancelPopupRemove = document.querySelector(
 );
 const btnDeleteTemplate = document.querySelector('.panel-buttons-list .delete');
 const option = document.getElementById('option');
+const thirdLayout = document.getElementsByClassName('thirdLayout');
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -215,11 +217,13 @@ const hidePopup = (popup) => {
 	error.style.visibility = 'hidden'; //czysci error w przypadku gdy wystąpił podczas dodawania formularza
 };
 let checkID = 0;
+let templateToRemoveFromPopup;
 const saveTemplates = () => {
 	if (textAreaTitle.value !== '') {
 		const newSelectTemplate = document.createElement('option');
 		newSelectTemplate.innerText = textAreaTitle.value;
-		newSelectTemplate.setAttribute('id', templateID);
+		templateListID = templateID + 11;
+		newSelectTemplate.setAttribute('id', templateListID);
 		selectTemplates.appendChild(newSelectTemplate);
 
 		hidePopup(popupTemplate);
@@ -228,16 +232,17 @@ const saveTemplates = () => {
 		createTemplate();
 		const fillListTempletoToRemove = () => {
 			const newLabelList = document.createElement('div');
+			const templateListPopupID = templateListID + 12;
 			newLabelList.classList.add('check1');
+			newLabelList.setAttribute('id', templateListPopupID);
 			option.appendChild(newLabelList);
-			optionID = templateID;
-			newLabelList.setAttribute('id', optionID);
-			// const newOptionToRemoveLabel = document.createElement('p');
-			// newLabelList.appendChild(newOptionToRemoveLabel);
-			newLabelList.innerHTML = `<p>${newSelectTemplate.innerText}</p><i onclick="removeTemplate(${templateID})" class="fas fa-times icon"></i>`;
-			//newOptionToRemoveLabel.textContent = newSelectTemplate.value;
+			newLabelList.innerHTML = `<p>${newSelectTemplate.innerText}</p><i onclick="removeT(${templateListPopupID},${templateID},${templateListID})" class="fas fa-times icon"></i>`;
+			;
+			// console.log(`id elementu listy popupa ${templateListPopupID}`);
+			// console.log(`id elementu listy rozwijanej ${templateListID}`);
+			// console.log(`id elementu szablonu w trzeciej kolumnie ${templateID}`);
+			
 		};
-		//optionID++;
 
 		fillListTempletoToRemove();
 		templateID++;
@@ -295,25 +300,25 @@ const checkForm = () => {
 //----------tutaj pokazywanie wartosci szablonów po wybraniu z listy select
 const selectValue = () => {
 	//-----połączenie wybranej option z szablonem zapisanym
+	const addToid = 11; //musze odejmować tą wartosc poniewaz dodaje ją zeby tworzyc unikalne id przy tworzeniu szablonów i listy rozwijanej w funkcj saveTemplates()
 	const titleViewSave = document.getElementsByClassName('titleViewSave');
 	savedTemplates.forEach((zapisaneTeksty) => {
 		//getElementsByClassName ponieważ to są żywe kolekcje inaczej funkcje nie działały na elementach dynamicznie dodanych
 		if (
-			zapisaneTeksty.id ==
-			selectTemplates.options[selectTemplates.selectedIndex].id
+			selectTemplates.options[selectTemplates.selectedIndex].id - addToid ==
+			zapisaneTeksty.id
 		) {
 			titleViewSave.forEach((temp) => {
 				//dostaję się do tytułu, który jest pierszy na liscie a potem do rodzica i porównuje id rodzica z id opcji w select
 				if (
-					temp.parentElement.id ==
-					selectTemplates.options[selectTemplates.selectedIndex].id
+					selectTemplates.options[selectTemplates.selectedIndex].id - addToid ==
+					temp.parentElement.id
 				) {
 					date.value = zapisaneTeksty.children[0].textContent;
 					inputTitle.value = zapisaneTeksty.children[1].textContent;
 					inputMessage.value = zapisaneTeksty.children[2].textContent;
 				}
 			});
-
 			// console.log(`wybrany id options ${selectedValueId} i template ${zapisaneTeksty.innerHTML} i dziecko pierwsze ${zapisaneTeksty.children[0].textContent} i dziecko drugie ${zapisaneTeksty.children[1].textContent} i dziecko trzecie ${zapisaneTeksty.children[2].textContent}
 			// `);
 		}
@@ -326,21 +331,14 @@ const checkDefaultOptions = () => {
 	selectTemplates.selectedIndex = 0;
 };
 
-const removeTemp = () => {};
-//----usuwanie szablonu, narazie działa tylko usuwanie z listy szablonów ale zpopupa nie
-const removeTemplate = (id) => {
-	const templateToRemove = document.getElementById(id);
-	selectTemplates.removeChild(templateToRemove);
-	console.log(templateToRemove);
-	//console.log(popupDeletetemplate.children[1].children.id[(templateID)]);
-	// const popupListToremove = option.querySelector(id);
-	// console.log(popupListToremove);
-};
-
-const removeOptionFromList = (id) => {
-	//const popupListToremove = document.getElementsByTagName(newid);
-	console.log(option.children);
-	//option.removeChild(id);
+//--usuwanie szablonów z listy rozwijanej, popupu i z trzeciej kolumny
+const removeT = (idPopup, idTemplates, idFromList) => {
+	const templateToRemoveFromPopup = document.getElementById(idPopup); //element z listy popupa do usuniecia
+	option.removeChild(templateToRemoveFromPopup); //option to rodzic dla listy na popupie
+	const templateToRemove = document.getElementById(idTemplates); //szablon do usunięcia, divy z wartosciami zapisanych szablonów, nie lista
+	thirdSiteToPrint.removeChild(templateToRemove); //
+	const ListToremove = document.getElementById(idFromList); //element listy rozwijanej do usunięcia
+	selectTemplates.removeChild(ListToremove); //usuniecie dziecka listy rozwijanej czyli wybranego elementu
 };
 
 //btnDeleteTemplate.addEventListener('click', removeTemp);
