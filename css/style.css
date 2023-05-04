@@ -127,6 +127,10 @@ body {
   margin-left: 40px;
   cursor: pointer;
 }
+.secondColumnStyle .templateStyle .fa-trash:hover {
+  color: brown;
+  box-shadow: 0 0 10px rgb(221, 122, 122);
+}
 .secondColumnStyle .underline {
   margin-top: 10px;
   position: relative;
@@ -195,12 +199,17 @@ body {
   position: relative;
   width: 100px;
   height: 30px;
-  background-color: var(--unerlineColor);
+  background-color: var(--secondColor);
   border: none;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
   color: var(--fontColor);
+  box-shadow: 0 0 5px rgb(128, 123, 123);
+}
+
+.btnTemplate:hover {
+  box-shadow: 0 0 10px rgb(221, 122, 122);
 }
 
 input {
@@ -227,7 +236,7 @@ input {
   margin-top: 10px;
   border-radius: 5px;
   border: none;
-  background-color: var(--unerlineColor);
+  background-color: var(--secondColor);
   color: var(--fontColor);
 }
 
@@ -240,7 +249,7 @@ input {
   border-radius: 5px;
   border: none;
   word-wrap: break-word;
-  background-color: var(--unerlineColor);
+  background-color: var(--secondColor);
   color: var(--fontColor);
   text-align: center;
 }
@@ -263,6 +272,10 @@ input {
   justify-content: space-between;
   margin-bottom: 10px;
   margin: 10px;
+}
+
+h4 {
+  color: var(--fontColor);
 }
 
 .thirdColumn {
@@ -330,9 +343,14 @@ textarea {
   width: 150px;
   border-radius: 5px;
   cursor: pointer;
-  background-color: var(--btnColor);
+  background-color: var(--mainColor);
   border: none;
   color: var(--fontColor);
+  box-shadow: 0 0 10px rgb(128, 123, 123);
+}
+
+.btnPrint2:hover {
+  box-shadow: 0 0 10px rgb(221, 122, 122);
 }
 
 p.date {
@@ -393,7 +411,7 @@ h2 {
   transform: translate(-50%, -50%);
   padding: 40px 0;
   width: 600px;
-  background-color: #fff;
+  background-color: var(--mainColor);
   box-shadow: 0 0 10px black;
   border-radius: 5px;
 }
@@ -409,6 +427,7 @@ h2 {
 }
 .popupSaveTemplate label {
   margin-bottom: 10px;
+  color: var(--fontColor);
 }
 .popupSaveTemplate h4 {
   margin-bottom: 20px;
@@ -422,6 +441,7 @@ h2 {
 .popupSaveTemplate .icon,
 .popupSaveTemplate i {
   margin-right: 10px;
+  font-size: 18px;
 }
 .popupSaveTemplate button {
   padding: 12px 25px;
@@ -431,6 +451,12 @@ h2 {
   font-size: 14px;
   cursor: pointer;
   transition: bacground-color 0.3s, color 0.3s;
+  transition: scale 0.3s, font-size 0.3s;
+  color: var(--fontColor);
+  background-color: var(--secondColor);
+}
+.popupSaveTemplate button:hover {
+  box-shadow: 0 0 10px rgb(221, 122, 122);
 }
 
 .errorForm {
@@ -470,6 +496,10 @@ h2 {
   font-size: 20px;
   color: #666;
 }
+.popupDeletetemplate i:hover {
+  color: brown;
+  box-shadow: 0 0 10px rgb(221, 122, 122);
+}
 .popupDeletetemplate .check1 {
   display: flex;
 }
@@ -478,8 +508,17 @@ h2 {
   margin: 10px;
 }
 .popupDeletetemplate .panel-buttons-list button {
+  display: flex;
   margin: 3px;
   min-width: 90px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-self: center;
+  font-size: 14px;
+}
+.popupDeletetemplate .panel-buttons-list i {
+  color: rgb(104, 71, 78);
 }
 .popupDeletetemplate h4 {
   margin-bottom: 5px;
