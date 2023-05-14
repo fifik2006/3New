@@ -64,10 +64,13 @@ const thirdLayout = document.getElementsByClassName('thirdLayout');
 const addTransactionPanel = document.querySelector('.add-transaction-panel');
 const addTransactionBtn = document.querySelector('.add-transaction');
 const saveBtn = document.querySelector('.save');
-const cancelBtn = document.querySelector('.cancel');
+const clearBtnAddTr = document.querySelector('.panel-buttons .cancel');
 const deleteBtn = document.querySelector('.delete'); //każdy osobny x
 const deleteAllBtn = document.querySelector('.delete-all');
 const panelPrice = document.querySelector('.price');
+const inputNameTrans = addTransactionPanel.querySelector('#name');
+const inputPriceTrans = addTransactionPanel.querySelector('#amount');
+const selectCategoryTrans = addTransactionPanel.querySelector('#category');
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -195,7 +198,7 @@ const writeTextUptoDate = (mes, e) => {
 //--czyszczenie zawartości inputów wydruku
 const cleanForm = (input) => {
 	input.forEach((element) => {
-		if (element.value === '') {
+		if (element.value !== '') {
 			element.value = '';
 		} else {
 			element.value = '';
@@ -385,6 +388,11 @@ btnClean.addEventListener('click', (e) => {
 	defaultValueView(titleP, messageP, pdata); //po wyczyszczeniu formularza wydruku domyślne wartości dla trzeciej kolumny
 	errorForm.style.visibility = 'hidden';
 	checkDefaultOptions();
+});
+
+clearBtnAddTr.addEventListener('click', (e) => {
+	cleanForm([inputNameTrans, inputPriceTrans,selectCategoryTrans]);
+	console.log(inputNameTrans.value);
 });
 
 //--otworzyc 2gą kolumnę po kliknieniu jakiegokolwiek przycisku z menu
