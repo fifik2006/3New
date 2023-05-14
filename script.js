@@ -60,6 +60,14 @@ const btnDeleteTemplate = document.querySelector('.panel-buttons-list .delete');
 const option = document.getElementById('option');
 const thirdLayout = document.getElementsByClassName('thirdLayout');
 
+//zmienne do opłat
+const addTransactionPanel = document.querySelector('.add-transaction-panel');
+const addTransactionBtn = document.querySelector('.add-transaction');
+const saveBtn = document.querySelector('.save');
+const cancelBtn = document.querySelector('.cancel');
+const deleteBtn = document.querySelector('.delete'); //każdy osobny x
+const deleteAllBtn = document.querySelector('.delete-all');
+
 //doc.save('a4.pdf');
 let doc = new jsPDF();
 function createPdf() {
@@ -237,11 +245,9 @@ const saveTemplates = () => {
 			newLabelList.setAttribute('id', templateListPopupID);
 			option.appendChild(newLabelList);
 			newLabelList.innerHTML = `<p>${newSelectTemplate.innerText}</p><i onclick="removeT(${templateListPopupID},${templateID},${templateListID})" class="fas fa-times icon"></i>`;
-			;
 			// console.log(`id elementu listy popupa ${templateListPopupID}`);
 			// console.log(`id elementu listy rozwijanej ${templateListID}`);
 			// console.log(`id elementu szablonu w trzeciej kolumnie ${templateID}`);
-			
 		};
 
 		fillListTempletoToRemove();
@@ -350,6 +356,7 @@ btnPrint.addEventListener('click', (element) => {
 	showColumn(printView, 'hide', 'printViewStyle');
 	hideColumn(main, 'hide', 'mainStyle');
 	showColumn(btnPrintView, 'hide', 'btnsView');
+	hideColumn(addTransactionPanel, 'hide', 'add-transaction-panel');
 });
 
 arrow.addEventListener('click', (element) => {
@@ -391,6 +398,7 @@ btnGroup.addEventListener('click', () => {
 	hideColumn(main, 'hide', 'mainStyle');
 	showColumn(thirdSiteToPrint, 'hide', 'thirdLayoutStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
+	hideColumn(addTransactionPanel, 'hide', 'add-transaction-panel');
 });
 
 btnPrice.addEventListener('click', () => {
@@ -401,6 +409,7 @@ btnPrice.addEventListener('click', () => {
 	hideColumn(main, 'hide', 'mainStyle');
 	hideColumn(printView, 'hide', 'printViewStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
+	showColumn(addTransactionPanel, 'hide', 'add-transaction-panel')
 });
 btnGeneratePrint.addEventListener('click', () => {
 	checkForm();

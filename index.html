@@ -50,10 +50,36 @@
                     <!-- <option value="1" id="100">test <i class="fas fa-times icon"></i></option>
                     <option value="1" id="101">test1</option>
                     <option value="1" id="102">test2</option> -->
-
-
                 </select>
             </div>
+            <!--formularz dodawania wydatków-->
+            <div class="add-transaction-panel">
+                <h3 class="title">Dodaj nową transakcję</h3>
+                <label for="name">Nazwa:</label>
+                <small>(podaj nazwę transakcji)</small>
+                <input type="text" id="name">
+                <label for="amount">Kwota:</label>
+                <small>(podaj kwotę transakcji, jeśli dodajesz wydatek, postaw znak minus na początku kwoty)</small>
+                <input type="number" id="amount">
+
+                <label for="category">Wybierz kategorię</label>
+                <small> [+] przychód, [-] wydatek</small>
+                <select id="category" onchange="selectCategory()">
+                    <option value="none" selected disabled></option>
+                    <option value="income">[+]Przychód</option>
+                    <option value="income">[-]Zakupy</option>
+                    <option value="income">[-]Jedzenie</option>
+                    <option value="income">[-]Kino</option>
+
+                </select>
+                <div class="panel-buttons">
+                    <button class="save"><i class="fas fa-save"></i>Zapisz</button>
+                    <button class="cancel"><i class="far fa-window-close"></i>Wyczyść</button>
+
+                </div>
+
+            </div>
+
 
 
             <div class="popupDeletetemplate">
@@ -80,20 +106,17 @@
                     </div> -->
                 </div>
 
-
-
                 <div class="panel-buttons-list">
                     <!-- <button class="delete icon"><i class="fa-solid fa-trash"></i>Usuń</button> -->
                     <button class="cancel icon"><i class="far fa-window-close"></i>
                         <p>Anuluj</p>
                     </button>
                 </div>
-
-
             </div>
 
-
             <div class="priceTitle hide">opłaty
+
+
             </div>
         </div>
         <div class="thirdColumn ">
