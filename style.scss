@@ -187,7 +187,8 @@ body {
 }
 .btnTemplate {
 	position: relative;
-	width: 100px;
+	padding: 3px;
+	//width: 100px;
 	height: 30px;
 	background-color: var(--secondColor);
 	border: none;
@@ -584,17 +585,19 @@ h2 {
 		margin: 5px;
 	}
 	button {
-		margin: 0 10px;
-		padding: 5px 5px;
-		font-size: 15px;
+		padding: 4px;
+		//width: 100px;
+		height: 30px;
+		margin: 0 5px;
+		font-size: 13px;
 		color: var(--fontColor);
-		border: 1px solid #fff;
-		background: none;
+		background: var(--secondColor);
+		border: none;
 		cursor: pointer;
 		transition: backround-color 0.3s;
 	}
 	button:hover {
-		background-color: rgb(25, 27, 51);
+		box-shadow: 0 0 10px rgb(221, 122, 122);
 	}
 }
 
@@ -617,6 +620,9 @@ header {
 	}
 	h2{
 		font-size: 40px;
+		i{
+			margin-right: 10px;
+		}
 	}
 }
 main {

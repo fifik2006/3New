@@ -392,7 +392,6 @@ btnClean.addEventListener('click', (e) => {
 
 clearBtnAddTr.addEventListener('click', (e) => {
 	cleanForm([inputNameTrans, inputPriceTrans,selectCategoryTrans]);
-	console.log(inputNameTrans.value);
 });
 
 //--otworzyc 2gą kolumnę po kliknieniu jakiegokolwiek przycisku z menu
