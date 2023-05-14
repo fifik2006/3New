@@ -67,6 +67,7 @@ const saveBtn = document.querySelector('.save');
 const cancelBtn = document.querySelector('.cancel');
 const deleteBtn = document.querySelector('.delete'); //każdy osobny x
 const deleteAllBtn = document.querySelector('.delete-all');
+const panelPrice = document.querySelector('.price');
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -357,6 +358,7 @@ btnPrint.addEventListener('click', (element) => {
 	hideColumn(main, 'hide', 'mainStyle');
 	showColumn(btnPrintView, 'hide', 'btnsView');
 	hideColumn(addTransactionPanel, 'hide', 'add-transaction-panel');
+	hideColumn(panelPrice, 'hide', 'price');
 });
 
 arrow.addEventListener('click', (element) => {
@@ -364,6 +366,7 @@ arrow.addEventListener('click', (element) => {
 	hideColumn(printView, 'hide', 'printViewStyle');
 	showColumn(main, 'hide', 'mainStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
+	hideColumn(panelPrice, 'hide', 'price');
 });
 
 //----tryb jasny ciemny wywołanie
@@ -399,6 +402,7 @@ btnGroup.addEventListener('click', () => {
 	showColumn(thirdSiteToPrint, 'hide', 'thirdLayoutStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
 	hideColumn(addTransactionPanel, 'hide', 'add-transaction-panel');
+	hideColumn(panelPrice, 'hide', 'price');
 });
 
 btnPrice.addEventListener('click', () => {
@@ -409,7 +413,8 @@ btnPrice.addEventListener('click', () => {
 	hideColumn(main, 'hide', 'mainStyle');
 	hideColumn(printView, 'hide', 'printViewStyle');
 	hideColumn(btnPrintView, 'hide', 'btnsView');
-	showColumn(addTransactionPanel, 'hide', 'add-transaction-panel')
+	showColumn(addTransactionPanel, 'hide', 'add-transaction-panel');
+	showColumn(panelPrice, 'hide', 'price');
 });
 btnGeneratePrint.addEventListener('click', () => {
 	checkForm();
