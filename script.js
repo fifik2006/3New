@@ -61,9 +61,12 @@ const option = document.getElementById('option');
 const thirdLayout = document.getElementsByClassName('thirdLayout');
 
 //zmienne do opłat
+const incomeSection = document.querySelector('.income-area');
+const expansesSection = document.querySelector('.expanses-area');
+const availableMoney = document.querySelector('.available-money');
 const addTransactionPanel = document.querySelector('.add-transaction-panel');
 const addTransactionBtn = document.querySelector('.add-transaction');
-const saveBtn = document.querySelector('.save');
+const saveBtn = document.querySelector('.panel-buttons .save');
 const clearBtnAddTr = document.querySelector('.panel-buttons .cancel');
 const deleteBtn = document.querySelector('.delete'); //każdy osobny x
 const deleteAllBtn = document.querySelector('.delete-all');
@@ -71,6 +74,10 @@ const panelPrice = document.querySelector('.price');
 const inputNameTrans = addTransactionPanel.querySelector('#name');
 const inputPriceTrans = addTransactionPanel.querySelector('#amount');
 const selectCategoryTrans = addTransactionPanel.querySelector('#category');
+let transactionID = 10001;
+let categoryIcon;
+let selectedCategory;
+let moneyArr = [0];
 
 //doc.save('a4.pdf');
 let doc = new jsPDF();
@@ -351,6 +358,91 @@ const removeT = (idPopup, idTemplates, idFromList) => {
 	selectTemplates.removeChild(ListToremove); //usuniecie dziecka listy rozwijanej czyli wybranego elementu
 };
 
+//-- opłaty
+const selectCategory = () => {
+	selectedCategory =
+		selectCategoryTrans.options[selectCategoryTrans.selectedIndex].text; //wybieranie kategorii, wywoływane onclickiem w htmlu
+	//console.log(selectCategoryTrans.options[selectCategoryTrans.selectedIndex].text)
+};
+
+const createNewTransaction = () => {
+	const newTransaction = document.createElement('div');
+	newTransaction.classList.add('transaction');
+	newTransaction.setAttribute('id', transactionID);
+
+	checkCategory(selectedCategory); //funkcja która sprawdza jaka jest wybrana kategoria, i przypisuje do niej ikone
+	newTransaction.innerHTML = `
+    <p class="transaction-name">${categoryIcon} ${inputNameTrans.value}</p>
+    <p class="transaction-amount">${inputPriceTrans.value} zł 
+    <button class="delete" onclick = "deleteTransaction(${transactionID})"><i class="fas fa-times"></i></button>
+    </p>`;
+
+	inputPriceTrans.value > 0 //instrukcja warunkowa, jezeli wartosc jest większa od 0
+		? incomeSection.appendChild(newTransaction) && //to dodajemy newTransaction do sekcji income
+		  newTransaction.classList.add('income') // i dodajemy mu class income
+		: expansesSection.appendChild(newTransaction) && //w przeciwnym wypadku jak kwota jest ujemna to do expanses czyli do wydatków
+		  newTransaction.classList.add('expense');
+
+	moneyArr.push(parseFloat(inputPriceTrans.value)); // dodajemy do tablicy moneyArr elementy jakie są pobrane z inputa, ale w inpucie zawsze jest string, parseFloat zamienia go na liczbę
+	console.log(inputPriceTrans.value);
+	console.log(moneyArr);
+	countMoney(moneyArr); //wywolujemy funkcję co zlicza pieniądze, argumentem jest tablica z całą wpisaną kasą
+	transactionID++;
+	cleanForm([inputNameTrans, inputPriceTrans, selectCategoryTrans]);
+};
+const checkFormTransaction = () => {
+	if (
+		inputNameTrans.value !== '' &&
+		inputPriceTrans.value !== ' ' &&
+		selectCategoryTrans.value !== 'none'
+	) {
+		//console.log('bedzie ok');
+		createNewTransaction();
+	} else {
+		alert('Wypełnij wszystkie pola transakcji');
+	}
+};
+const checkCategory = (transaction) => {
+	//bedziemy sprawdzac transakcję do jakiej przypisac i wrzucac odpowiednią ikone pod categoryIcon
+	switch (transaction) {
+		case '[+]Przychód':
+			categoryIcon = '<i class="fas fa-money-bill-wave"></i>';
+			break;
+		case '[-]Wydatek':
+			categoryIcon = '<i class="fas fa-cart-arrow-down"></i>';
+			break;
+	}
+};
+
+const countMoney = (money) => {
+	const newMoney = money.reduce((a, b) => a + b); //reduce to metoda wykonywana na kazdym elemencie tablicy
+	availableMoney.textContent = ` ${newMoney} zł`;
+};
+
+const deleteTransaction = (id) => {
+	const transactionToDelete = document.getElementById(id);
+
+	const transactionAmount = parseFloat(
+		transactionToDelete.childNodes[3].innerText
+	); //indekx 3 przechowuje wartość którą potem bedziemy wywalac
+	//parsefloat bierze tylko cyfry dlatego nie bedzie zł, nie zwraca liter
+	const indexOfTransaction = moneyArr.indexOf(transactionAmount);
+	moneyArr.splice(indexOfTransaction, 1);
+	transactionToDelete.classList.contains('income')
+		? incomeSection.removeChild(transactionToDelete)
+		: expansesSection.removeChild(transactionToDelete);
+
+	countMoney(moneyArr);
+	// console.log(transactionAmount);
+	// console.log(moneyArr);
+};
+
+const deleteAllTransaction = () => {
+	incomeSection.innerHTML = '<h3>Przychód</h3>';
+	expansesSection.innerHTML = '<h3>Wydatki</h3>';
+	availableMoney.textContent = '0zł';
+	moneyArr = [0];
+};
 //btnDeleteTemplate.addEventListener('click', removeTemp);
 
 btnPrint.addEventListener('click', (element) => {
@@ -391,7 +483,7 @@ btnClean.addEventListener('click', (e) => {
 });
 
 clearBtnAddTr.addEventListener('click', (e) => {
-	cleanForm([inputNameTrans, inputPriceTrans,selectCategoryTrans]);
+	cleanForm([inputNameTrans, inputPriceTrans, selectCategoryTrans]);
 });
 
 //--otworzyc 2gą kolumnę po kliknieniu jakiegokolwiek przycisku z menu
@@ -446,3 +538,5 @@ trashButton.addEventListener('click', () => {
 btnCancelPopupRemove.addEventListener('click', () => {
 	hidePopup(popupDeletetemplate);
 });
+saveBtn.addEventListener('click', checkFormTransaction);
+deleteAllBtn.addEventListener('click', deleteAllTransaction);

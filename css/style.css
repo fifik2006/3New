@@ -562,6 +562,7 @@ h2 {
 .add-transaction-panel select {
   width: 90%;
   background-color: var(--secondColor);
+  color: var(--fontColor);
 }
 .add-transaction-panel input,
 .add-transaction-panel select,
