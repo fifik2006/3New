@@ -31,8 +31,8 @@ let isVisiblePrintForms = false;
 const thirdSiteToPrintStyle = document.querySelector('.thirdLayoutStyle');
 const btnPrintView = document.querySelector('.btnsToPrint');
 // ---buttony na popupie
-const btnSaveTemplate = document.querySelector('.panel-buttons .save');
-const btnCancelTemplate = document.querySelector('.panel-buttons .cancel');
+const btnSaveTemplate = document.querySelector('.popupPanelButtons .save');
+const btnCancelTemplate = document.querySelector('.popupPanelButtons .cancel');
 //---popup do zapisu szablonu
 const popupTemplate = document.querySelector('.popupSaveTemplate');
 const textAreaTitle = document.querySelector('#titleTemplate');
